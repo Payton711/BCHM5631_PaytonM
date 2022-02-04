@@ -13,14 +13,42 @@ options(stringsAsFactors = FALSE)
 library(GenomicRanges)
 library(rtracklayer)
 library(tidyverse)
-library(ggpubr)
-library(Gviz)
-source("../../../util/_setup.R")
-source("../../../util/intersect_functions.R")
-source("../../../util/plotting_functions.R")
+
+
 ```
 
-# Welcome to RStudio-viz! Let's take a little tour.
+# First task today is to clone the class repository and create R project in R-studio
+
+1) Goto class repository on boulderrinnlab git hub (class 2022)
+
+2) Copy SSH code 
+
+3) Clone directory in your folder: (/scratch/Shares/rinnclass/<your_folder>)
+- fromy your terminal
+
+4) once cloned goto R-studio and open a new project (top right corner dropdown)
+- choose from existing directory.
+- Navigate to the CLASS_2020 dir you just cloned
+- click open
+
+5) navigate to "class_exeRcises"
+
+5) Create a new folder called "analysis" (button bottom right panel first tab on left)
+
+6) inside "analysis" create another folder called "04_instlaling_packages"
+
+7) set this as your working directory (bottom right pannel - blue cog drop down)
+
+8) Navigate back to the 04_.RMD in clasexeRcises 
+
+9) Make a change (enter a space whatever)
+
+10) Commit and push this to your git hub repository.
+
+
+
+
+# Now that we are all set up we can start installing packges
 
 First we need to learn how to install packages. Let's find out what version of R we are using.
 
@@ -37,7 +65,7 @@ install.packages("tidyverse")
 
 Cool we have our first package installed.
 
-However sometimes we ned to install from Bioconductor and need to use BiocManager::install function
+However sometimes we need to install from Bioconductor and need to use BiocManager::install function
 
 ```{R install BiocManager}
 
@@ -89,7 +117,7 @@ We will addres the following two questions as an example:
 ```{r read in peaks per DBP}
 
 # read in csv file that has number of peaks and genome coverage
-peaks_per_dbp <- read_csv("../../../../../data/number_of_peaks_per_dbp.csv")
+peaks_per_dbp <- read_csv("/scratch/Shares/rinnclass/CLASS_2022/data/number_of_peaks_per_dbp.csv")
 
 # Now we have an object in the environment that is called 'peaks_per_dbp'
 head(peaks_per_dbp)
@@ -105,6 +133,7 @@ head(peaks_per_dbp)
 # Let's get more infomration about these peaks with table
 
 table(peaks_per_dbp$dbp)
+sumarty(peaks_per_dbp$dbp)
 
 # Not very useful in this case because there is only one entry for each DBP
 
@@ -175,6 +204,7 @@ peaks_per_dbp$newcol <- "What?"
 # Now let's assign a number to each DBP in another new column
 ```{R new column populating with a function}
 
+#TODO start here
 peaks_per_dbp$id <- 1:nrow(peaks_per_dbp)
 
 ```
@@ -208,6 +238,8 @@ hist(peaks_per_dbp$num_peaks, breaks = 40)
 
 # saving the figure (we will do this over and over again :)
 # we will learn ggplot later but we use PDF and turn of null device (plot window) 
+
+# MAKE SURE YOU ARE IN RIGHT WORKING DIR analysis/04_x
 
 pdf("figures/hist_of_peaks_per_dbp.pdf")
 hist(peaks_per_dbp$num_peaks, breaks = 40) 
@@ -274,6 +306,7 @@ ppdbp_subset <- peaks_per_dbp[grepl(pattern_to_search, peaks_per_dbp$dbp),]
 # %in% will find all the data "in" the list being searched "genes"
 
 peaks_per_dbp$dbp %in% genes
+logical_vector <- peaks_per_dbp$dbp %in% genes
 
 # Now we will set a variable as the output using filter and then the code we just ran
 
