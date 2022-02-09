@@ -194,3 +194,4 @@ Sometimes nextflow versions don't work so well with a given pipeline.
 
 Nextflow self-update
 
+
