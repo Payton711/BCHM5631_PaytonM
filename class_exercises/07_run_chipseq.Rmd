@@ -5,10 +5,35 @@ Date: "09/29/2021
 output: html_document
 ---
 
+Let's look at our results:
+
+Basepath: 
+"/scratch/Shares/rinnclass/CLASS_2022/Your_FOLDER/CLASS_2022/class_exeRcises/analysis/06_nf_core_first_chip_Seq/data/"
+
+# Here is the individual qc files:
+
+results/fastqc/ *.html
+
+# All QC combined and more:
+
+results/multiqc/broadPeak/multiqc_report.html
+
+# Here are the peak files:
+
+results/bwa/mergedLibrary/macs/broadPeak
+
+# Pipeline run information:
+
+results/pipeline_info/pipeline_report.html
+
+results/pipeline_info/results_description.html
+
+
+NOW:
+
 We are about to run our first chipseq analysis!! 
 
 First we need to know how to run jobs, check on them and most importantly cancel them!
-
 
 *******************************************
 Running and Checking on slurm jobs
@@ -38,7 +63,6 @@ the -u flag is for user.
 examine the information provided and google the column headers for more info.
 
 # canceling jobs!
-
 
 Let's say you accidently hit the run button and want to cancel immediately.
 
@@ -372,4 +396,3 @@ ZNF883,1,../../fastq/ENCFF581CMX.fastq.gz,,ZNF883,ENCSR019ZGX
 ZNF883,2,../../fastq/ENCFF308XDZ.fastq.gz,,ZNF883,ENCSR019ZGX
 ZXDC,1,../../fastq/ENCFF743BIY.fastq.gz,,ZXDC,ENCSR313HFF
 ZXDC,2,../../fastq/ENCFF457XYK.fastq.gz,,ZXDC,ENCSR313HFF
-
